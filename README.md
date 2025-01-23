@@ -1,4 +1,4 @@
-STEPS - EXPRESS
+STEPS - EXPRESS - express e`una catena di funzioni, tutto e middleware
 
 in show:
 -prelevo id da req.query.params
@@ -28,4 +28,4 @@ MIDDLEWARE
 -sono funzioni, they have next, in case all goes fine, you go to next step..
 -cattura errore e risponde con code 500
 -se errore avviene all interno di una funzione asincrona l errore non e passato in automatico
-in controller functions the err e un errore asincrono, non viene catturato, lo dobbiamo fare manualmente...
+in controller functions the err e un errore asincrono, non viene catturato, lo dobbiamo fare manualmente...next ( next verso dove c`e` l errore, questo ci rimanda a error handler)
