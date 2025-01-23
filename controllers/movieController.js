@@ -1,19 +1,24 @@
 const db_Connection = require("../data/db_Connection")
 
-const index = (req, res) => {
+const index = (req, res, next) => {
     const sql = "SELECT * FROM `movies`"
 
     db_Connection.query(sql, (err, movies) => {
+        // if (err) {
+        //     const resObj = {
+        //         status: "fail",
+        //         message: "errore del server"
+        //     };
+        //     if (process.env.ENVIRONMENT === "development") {
+        //         resObj.detail = err.stack;
+        //     }
+        //     return res.status(500).json({ resObj })
+        // }
+
         if (err) {
-            const resObj = {
-                status: "fail",
-                message: "errore del server"
-            };
-            if (process.env.ENVIRONMENT === "development") {
-                resObj.detail = err.stack;
-            }
-            return res.status(500).json({ resObj })
+            return next(new Error("Errore interno del server") )
         }
+        
         return res.status(200).json({
             status: "success",
             data: movies,
@@ -21,7 +26,7 @@ const index = (req, res) => {
     });
 };
 
-const show = (req, res) => {
+const show = (req, res, next) => {
     const id = req.params.id
     const sql = "SELECT * FROM movies WHERE id = ?"
     const sqlReviews = `
@@ -32,10 +37,15 @@ const show = (req, res) => {
   WHERE movies.id = ?`
 
     db_Connection.query(sql, [id], (err, movies) => {
-        if (err) {
-            return res.status(500).json({
-                message: "errore del server"
-            })
+        // if (err) {
+        //     return res.status(500).json({
+        //         message: "errore del server"
+        //     })
+        // }
+
+        //se c e errore dobbiamo chiamare next
+        if(err) {
+            return next(new Error("Errore interno del server"))
         }
         if (movies.length === 0) {
             return res.status(404).json({

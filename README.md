@@ -23,3 +23,9 @@ file env> file nascosto, il Sistema operative lo nasconde
 -port 3000 potrebbe essere variabile  dambiente perche puo cambiare
 -in router la funzione di callback verra invocata da express quando questa rotta sara richiesta
 -return res.json({data: movies[0]})  movies e un array, quindi se voglio solo uno devo mettere indice per oggetto
+
+MIDDLEWARE
+-sono funzioni, they have next, in case all goes fine, you go to next step..
+-cattura errore e risponde con code 500
+-se errore avviene all interno di una funzione asincrona l errore non e passato in automatico
+in controller functions the err e un errore asincrono, non viene catturato, lo dobbiamo fare manualmente...
