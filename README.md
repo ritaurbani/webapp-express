@@ -22,3 +22,4 @@ file env> file nascosto, il Sistema operative lo nasconde
 -app.js punto ingress nostra applicazione
 -port 3000 potrebbe essere variabile  dambiente perche puo cambiare
 -in router la funzione di callback verra invocata da express quando questa rotta sara richiesta
+-return res.json({data: movies[0]})  movies e un array, quindi se voglio solo uno devo mettere indice per oggetto
