@@ -4,17 +4,7 @@ const index = (req, res, next) => {
     const sql = "SELECT * FROM `movies`"
 
     db_Connection.query(sql, (err, movies) => {
-        // if (err) {
-        //     const resObj = {
-        //         status: "fail",
-        //         message: "errore del server"
-        //     };
-        //     if (process.env.ENVIRONMENT === "development") {
-        //         resObj.detail = err.stack;
-        //     }
-        //     return res.status(500).json({ resObj })
-        // }
-
+  
         if (err) {
             return next(new Error("Errore interno del server") )
         }
