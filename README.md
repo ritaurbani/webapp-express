@@ -29,3 +29,13 @@ MIDDLEWARE
 -cattura errore e risponde con code 500
 -se errore avviene all interno di una funzione asincrona l errore non e passato in automatico
 in controller functions the err e un errore asincrono, non viene catturato, lo dobbiamo fare manualmente...next ( next verso dove c`e` l errore, questo ci rimanda a error handler)
+
+/////////////////////////////////////////// DOCUMENTAZIONE API //////////////////////////////////////////////
+API DEI MIEI FILM
+ENDOIPNTS:
+1. /MOVIES
+RESTITUISCE TUTTI MOVIES
+POSSIBILI PARAMETRI:
+SEARCH: LA CHIAVE DI RICERCA PER FILTRARE IL TITOLO
+2. /MOVIES/ID
+RESTITUISCE DETTAGLI DI UN SINGOLO FILM
